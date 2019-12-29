@@ -1,7 +1,7 @@
-import firebase from 'firebase/app'
+import * as firebase from 'firebase/app'
 
 // My web app's Firebase configuration
-var firebaseConfig = {
+var config = {
   apiKey: "AIzaSyBUnN6SzDan1EXpqsSEwVuGbwqJncMTv-o",
   authDomain: "pokemon-dev-001.firebaseapp.com",
   databaseURL: "https://pokemon-dev-001.firebaseio.com",
@@ -13,4 +13,9 @@ var firebaseConfig = {
 }
 
 // Initialize Firebase
-export default !firebase.apps.length ? firebase.initializeApp(config) : firebase.app()
+let firebaseApp = null
+!firebase.apps.length ? firebaseApp = firebase.initializeApp(config) : firebaseApp = firebase.app()
+
+const firebaseAuth = firebaseApp.auth()
+
+export { firebaseApp, firebaseAuth }
